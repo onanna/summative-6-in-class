@@ -2,6 +2,7 @@ package com.example.U1M6Summative.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class Invoice {
 
     @NotNull (message = "lateFee cannot be null")
     @NotBlank(message = "lateFee cannot be blank")
-    private Float lateFee;
+    private BigDecimal lateFee;
 
     public Invoice() {
     }
@@ -72,11 +73,11 @@ public class Invoice {
         this.returnDate = returnDate;
     }
 
-    public Float getLateFee() {
+    public BigDecimal getLateFee() {
         return lateFee;
     }
 
-    public void setLateFee(Float lateFee) {
+    public void setLateFee(BigDecimal lateFee) {
         this.lateFee = lateFee;
     }
 

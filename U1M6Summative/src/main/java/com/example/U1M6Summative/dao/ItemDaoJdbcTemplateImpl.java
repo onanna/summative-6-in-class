@@ -12,7 +12,7 @@ public class ItemDaoJdbcTemplateImpl implements ItemDao{
     // mapping function
 
     // prepared statements
-    
+
 
     @Override
     public Item addItem(Item item) {
