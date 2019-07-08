@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class InvoiceItemDaoImpl implements InvoiceItemDao {
+public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
 
     @Override
     public InvoiceItem getInvoiceItem(Integer id) {
@@ -32,4 +32,5 @@ public class InvoiceItemDaoImpl implements InvoiceItemDao {
     public void deleteInvoiceItem(Integer id) {
 
     }
+
 }
