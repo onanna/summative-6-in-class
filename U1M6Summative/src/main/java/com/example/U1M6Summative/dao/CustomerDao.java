@@ -1,8 +1,20 @@
+
 package com.example.U1M6Summative.dao;
+
+import com.example.U1M6Summative.dto.Customer;
+
+import java.util.List;
 
 public interface CustomerDao {
 
-    Customer getInvoiceById(int id);
+    Customer addCustomer(Customer customer);
+
+    Customer getCustomer(int id);
+
+    List<Customer> getAllCustomers();
+
+    void updateCustomer(Customer customer);
+
     void deleteCustomer(int id);
-    void deleteCustomerItems(int id);
+
 }
