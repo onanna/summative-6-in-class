@@ -1,60 +1,62 @@
 package com.example.U1M6Summative.dto;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceItem {
-    private int invoiceId;
-    private int invoiceItemId;
-    private int itemId;
-    private int quantity;
-    private double unitRate;
-    private double discount;
 
-    public int getInvoiceId() {
+    private Integer invoiceId;
+    private Integer invoiceItemId;
+    private Integer itemId;
+    private Integer quantity;
+    private BigDecimal unitRate;
+    private BigDecimal discount;
+
+    public Integer getInvoiceId() {
         return invoiceId;
     }
 
-    public void setInvoiceId(int invoiceId) {
+    public void setInvoiceId(Integer invoiceId) {
         this.invoiceId = invoiceId;
     }
 
-    public int getInvoiceItemId() {
+    public Integer getInvoiceItemId() {
         return invoiceItemId;
     }
 
-    public void setInvoiceItemId(int invoiceItemId) {
+    public void setInvoiceItemId(Integer invoiceItemId) {
         this.invoiceItemId = invoiceItemId;
     }
 
-    public int getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
-    public void setItemId(int itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public double getUnitRate() {
+    public BigDecimal getUnitRate() {
         return unitRate;
     }
 
-    public void setUnitRate(double unitRate) {
+    public void setUnitRate(BigDecimal unitRate) {
         this.unitRate = unitRate;
     }
 
-    public double getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 
@@ -73,6 +75,6 @@ public class InvoiceItem {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoiceId(), getInvoiceItemId(), getQuantity(), getUnitRate(), getDiscount());
+        return Objects.hash(getInvoiceId(), getInvoiceItemId(), getItemId(), getQuantity(), getUnitRate(), getDiscount());
     }
 }
