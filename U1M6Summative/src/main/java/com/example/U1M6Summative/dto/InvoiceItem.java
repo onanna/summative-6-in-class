@@ -1,4 +1,4 @@
-package dto;
+package com.example.U1M6Summative.dto;
 
 import java.util.Objects;
 
