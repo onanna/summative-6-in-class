@@ -2,8 +2,7 @@ package com.example.U1M6Summative.viewmodel;
 
 import com.example.U1M6Summative.dto.InvoiceItem;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,39 +11,21 @@ import java.util.Objects;
 
 public class InvoiceViewModel {
 
-    private Integer invoiceId;
+  private Integer id;
+  private Integer customerId;
+  private LocalDate orderDate;
+  private LocalDate pickupDate;
+  private LocalDate returnDate;
+  private BigDecimal lateFee;
 
-    @NotNull(message = "customerId cannot be null")
-    @NotBlank(message = "customerId cannot be blank")
-    private Integer customerId;
+  List<InvoiceItem> invoiceItemList = new ArrayList<>();
 
-    @NotNull (message = "orderDate cannot be null")
-    @NotBlank(message = "orderDate cannot be blank")
-    private LocalDate orderDate;
-
-    @NotNull (message = "pickupDate cannot be null")
-    @NotBlank(message = "pickupDate cannot be blank")
-    private LocalDate pickupDate;
-
-    @NotNull (message = "returnDate cannot be null")
-    @NotBlank(message = "returnDate cannot be blank")
-    private LocalDate returnDate;
-
-    @NotNull (message = "lateFee cannot be null")
-    @NotBlank(message = "lateFee cannot be blank")
-    private BigDecimal lateFee;
-
-    List<InvoiceItem> invoiceItems = new ArrayList<>();
-
-    public InvoiceViewModel() {
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getInvoiceId() {
-        return invoiceId;
-    }
-
-    public void setInvoiceId(Integer invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCustomerId() {
@@ -87,12 +68,12 @@ public class InvoiceViewModel {
         this.lateFee = lateFee;
     }
 
-    public List<InvoiceItem> getInvoiceItems() {
-        return invoiceItems;
+    public List<InvoiceItem> getInvoiceItemList() {
+        return invoiceItemList;
     }
 
-    public void setInvoiceItems(List<InvoiceItem> invoiceItems) {
-        this.invoiceItems = invoiceItems;
+    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
+        this.invoiceItemList = invoiceItemList;
     }
 
     @Override
@@ -100,17 +81,17 @@ public class InvoiceViewModel {
         if (this == o) return true;
         if (!(o instanceof InvoiceViewModel)) return false;
         InvoiceViewModel that = (InvoiceViewModel) o;
-        return getInvoiceId().equals(that.getInvoiceId()) &&
+        return getId().equals(that.getId()) &&
                 getCustomerId().equals(that.getCustomerId()) &&
                 getOrderDate().equals(that.getOrderDate()) &&
                 getPickupDate().equals(that.getPickupDate()) &&
                 getReturnDate().equals(that.getReturnDate()) &&
                 getLateFee().equals(that.getLateFee()) &&
-                getInvoiceItems().equals(that.getInvoiceItems());
+                getInvoiceItemList().equals(that.getInvoiceItemList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoiceId(), getCustomerId(), getOrderDate(), getPickupDate(), getReturnDate(), getLateFee(), getInvoiceItems());
+        return Objects.hash(getId(), getCustomerId(), getOrderDate(), getPickupDate(), getReturnDate(), getLateFee(), getInvoiceItemList());
     }
 }

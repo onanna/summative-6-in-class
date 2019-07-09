@@ -11,40 +11,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class CustomerViewModel {
-
-    private Integer customerId;
-
-    @NotNull(message = "first Name input cannot be null")
-    @NotBlank(message = "You have to have an input for First name")
+    private Integer id;
     private String firstName;
-
-    @NotNull(message = "Last name cannot be null")
-    @NotBlank(message = "You have to have an input for Last name")
     private String lastName;
-
-    @NotNull(message = "Email cannot be null")
-    @NotBlank(message = "You have to have an input for Email")
     private String email;
-
-    @NotNull(message = "Company cannot be null")
-    @NotBlank(message = "You have to have an input for Company")
     private String company;
-
-    @NotNull(message = "Phone cannot be null")
-    @NotBlank(message = "You have to have an input for Phone")
     private String phone;
 
-    List<Invoice> invoices = new ArrayList<>();
-
-    public CustomerViewModel() {
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -87,12 +66,7 @@ public class CustomerViewModel {
         this.phone = phone;
     }
 
-    public List<Invoice> getInvoices() {
-        return invoices;
-    }
-
-    public void setInvoices(List<Invoice> invoices) {
-        this.invoices = invoices;
+    public CustomerViewModel() {
     }
 
     @Override
@@ -100,17 +74,16 @@ public class CustomerViewModel {
         if (this == o) return true;
         if (!(o instanceof CustomerViewModel)) return false;
         CustomerViewModel that = (CustomerViewModel) o;
-        return getCustomerId().equals(that.getCustomerId()) &&
+        return getId().equals(that.getId()) &&
                 getFirstName().equals(that.getFirstName()) &&
                 getLastName().equals(that.getLastName()) &&
                 getEmail().equals(that.getEmail()) &&
                 getCompany().equals(that.getCompany()) &&
-                getPhone().equals(that.getPhone()) &&
-                Objects.equals(getInvoices(), that.getInvoices());
+                getPhone().equals(that.getPhone());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCustomerId(), getFirstName(), getLastName(), getEmail(), getCompany(), getPhone(), getInvoices());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getCompany(), getPhone());
     }
 }

@@ -7,24 +7,32 @@ import org.springframework.web.bind.annotation.*;
 import java.io.PipedOutputStream;
 
 @RestController
+
+@RequestMapping("/customer")
 public class CustomerController {
-    @RequestMapping(value = "/customer", method = RequestMethod.POST)
+
+
+    @PostMapping
     public Customer addCustomer(@RequestBody Customer customer){
 
+        return customer;
     }
 
-    @RequestMapping(value = "/customer{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public Customer getCustomer(@PathVariable(name = "id") int id) {
-
+        Customer customer = new Customer();
+        return customer;
     }
 
-    @RequestMapping(value = "/customer{id}", method = RequestMethod.PUT)
+    @PutMapping("/{id}")
     public Customer updateCustomer(@PathVariable(name = "id") @RequestBody Customer customer){
 
+        return customer;
     }
 
-    @RequestMapping(value = "/customer{id}", method = RequestMethod.DELETE)
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable(name = "id") int id){
         //no code here, will delete
 
