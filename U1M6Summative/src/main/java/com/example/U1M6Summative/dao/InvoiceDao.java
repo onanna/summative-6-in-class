@@ -5,6 +5,7 @@ import com.example.U1M6Summative.dto.Invoice;
 import java.util.List;
 
 public interface InvoiceDao {
+
     Invoice addInvoice(Invoice invoice);
 
     void updateInvoice(Invoice invoice);
