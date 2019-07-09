@@ -1,6 +1,7 @@
 package com.example.U1M6Summative.controller;
 
 import com.example.U1M6Summative.dto.Customer;
+import com.example.U1M6Summative.viewmodel.CustomerViewModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,19 +13,19 @@ import java.io.PipedOutputStream;
 public class CustomerController {
 
     @PostMapping
-    public Customer addCustomer(@RequestBody Customer customer){
+    public CustomerViewModel addCustomer(@RequestBody CustomerViewModel customer){
 
         return customer;
     }
 
     @GetMapping("/{id}")
-    public Customer getCustomer(@PathVariable(name = "id") int id) {
-        Customer customer = new Customer();
+    public CustomerViewModel getCustomer(@PathVariable(name = "id") int id) {
+        CustomerViewModel customer = new CustomerViewModel();
         return customer;
     }
 
     @PutMapping("/{id}")
-    public Customer updateCustomer(@PathVariable(name = "id") @RequestBody Customer customer){
+    public CustomerViewModel updateCustomer(@PathVariable(name = "id") int id, @RequestBody CustomerViewModel customer){
 
         return customer;
     }
