@@ -1,29 +1,31 @@
 package com.example.U1M6Summative.controller;
 
 import com.example.U1M6Summative.dto.Invoice;
+import com.example.U1M6Summative.viewmodel.InvoiceViewModel;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/invoice")
 public class InvoiceController {
+
     @PostMapping
-    public Invoice addInvoice(@RequestBody Invoice invoice){
+    public InvoiceViewModel addInvoice(@RequestBody InvoiceViewModel invoice){
 
         return invoice;
     }
 
-    @RequestMapping(value ="/{id}", method = RequestMethod.GET)
-    public Invoice getInvoice(@PathVariable(name = "id") int id) {
+    @GetMapping("/{id}")
+    public InvoiceViewModel getInvoice(@PathVariable(name = "id") int id) {
         return null;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public void deleteInvoice(@PathVariable(name = "id") int id){
 
     }
 
-    @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET)
-    public Invoice getInvoiceByCustomerId(@PathVariable int customerId){
+    @GetMapping("/customer/{customerId}")
+    public InvoiceViewModel getInvoiceByCustomerId(@PathVariable int customerId){
         return null;
     }
 }

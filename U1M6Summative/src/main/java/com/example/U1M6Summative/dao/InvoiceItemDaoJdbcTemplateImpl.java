@@ -15,7 +15,10 @@ import java.util.List;
 public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
 
     private JdbcTemplate jdbcTemplate;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 43b143b1f1817b943783d6b30eeba7b6d6e07f89
     @Autowired
     public InvoiceItemDaoJdbcTemplateImpl (JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
@@ -24,11 +27,19 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     private static final String SELECT_INVOICE_ITEM_SQL =
             "select * from invoice_item where invoice_item_id = ?";
     private static final String SELECT_ALL_INVOICE_ITEMS_SQL =
+<<<<<<< HEAD
             "select from invoice_item";
     private static final String INSERT_INVOICE_ITEM_SQL =
             "insert into invoice_item (item_id, quantity, unit_rate, discount) values (?,?,?,?)";
     private static final String UPDATE_INVOICE_ITEM_SQL =
             "update invoice_item set item_id = ?, quantity = ?, unit_rate = ?, discount = ?";
+=======
+            "select * from invoice_item";
+    private static final String INSERT_INVOICE_ITEM_SQL =
+            "insert into invoice_item (invoice_id, item_id, quantity, unit_rate, discount) values (?,?,?,?,?)";
+    private static final String UPDATE_INVOICE_ITEM_SQL =
+            "update invoice_item set item_id = ?, quantity = ?, unit_rate = ?, discount = ? where invoice_item_id = ?";
+>>>>>>> 43b143b1f1817b943783d6b30eeba7b6d6e07f89
     private static final String DELETE_INVOICE_ITEM =
             "delete invoice_item where invoice_item_id = ?";
 
@@ -50,7 +61,10 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     @Transactional
     public InvoiceItem addInvoiceItem(InvoiceItem invoiceItem) {
         jdbcTemplate.update(INSERT_INVOICE_ITEM_SQL,
+<<<<<<< HEAD
                 invoiceItem.getInvoiceItemId(),
+=======
+>>>>>>> 43b143b1f1817b943783d6b30eeba7b6d6e07f89
                 invoiceItem.getItemId(),
                 invoiceItem.getQuantity(),
                 invoiceItem.getUnitRate(),
@@ -68,6 +82,10 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     public void updateInvoiceItem(InvoiceItem invoiceItem) {
         jdbcTemplate.update(UPDATE_INVOICE_ITEM_SQL,
                 invoiceItem.getInvoiceItemId(),
+<<<<<<< HEAD
+=======
+                invoiceItem.getInvoiceId(),
+>>>>>>> 43b143b1f1817b943783d6b30eeba7b6d6e07f89
                 invoiceItem.getItemId(),
                 invoiceItem.getQuantity(),
                 invoiceItem.getUnitRate(),
@@ -78,7 +96,22 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     @Override
     public void deleteInvoiceItem(Integer id) {
         jdbcTemplate.update(DELETE_INVOICE_ITEM, id);
+<<<<<<< HEAD
+=======
 
+    }
+
+    private InvoiceItem mapRowToInvoiceItem(ResultSet rs, int rowNum)throws SQLException {
+        InvoiceItem invoiceItem = new InvoiceItem();
+        invoiceItem.setInvoiceItemId(rs.getInt("invoice_item_id"));
+        invoiceItem.setInvoiceId(rs.getInt("invoice_id"));
+        invoiceItem.setItemId(rs.getInt("item_id"));
+        invoiceItem.setQuantity(rs.getInt("quantity"));
+        invoiceItem.setUnitRate(rs.getBigDecimal("unit_rate"));
+        invoiceItem.setDiscount(rs.getBigDecimal("discount"));
+>>>>>>> 43b143b1f1817b943783d6b30eeba7b6d6e07f89
+
+        return invoiceItem;
     }
 
     private InvoiceItem mapRowToInvoiceItem(ResultSet rs, int rowNum)throws SQLException {
