@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
-//for actual inplementation we are only implementing the 3 methods which are required
+
     @Override
     public Invoice getInvoiceById(int id) {
         return null;
@@ -25,8 +25,6 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
 
     }
 
-
-    //implementing this one below
     @Override
     public List<Invoice> getInvoiceByCustomer(Integer customerId) {
         return null;

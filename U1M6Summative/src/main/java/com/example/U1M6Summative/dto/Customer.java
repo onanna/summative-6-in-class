@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class Customer {
 
-
     private Integer customerId;
 
     @NotNull(message = "first Name input cannot be null")

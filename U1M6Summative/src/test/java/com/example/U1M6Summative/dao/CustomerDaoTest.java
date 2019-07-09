@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,16 +21,13 @@ public class CustomerDaoTest {
     @Autowired
     CustomerDao customerDao;
 
-
     @Before
     public void setUp() throws Exception {
         List<Customer> customerList = customerDao.getAllCustomers();
         for(Customer c : customerList){
             customerDao.deleteCustomer(c.getCustomerId());
         }
-
     }
-
 
     @Test
     public void addGetDeleteCustomer(){
@@ -70,8 +67,6 @@ public class CustomerDaoTest {
         List<Customer> customerList = customerDao.getAllCustomers();
 
         assertEquals(1, customerList.size());
-
-
     }
     @Test
     public void updateCustomer(){
@@ -85,7 +80,6 @@ public class CustomerDaoTest {
 
         customer1 = customerDao.addCustomer(customer1);
 
-
         customer1.setFirstName("Wario");
         customer1.setLastName("Waaa");
         customer1.setEmail("wario@waaaah.com");
@@ -96,11 +90,5 @@ public class CustomerDaoTest {
         Customer customer2 = customerDao.getCustomer(customer1.getCustomerId());
 
         assertEquals(customer1,customer2);
-
-
-
     }
-
-
-
 }

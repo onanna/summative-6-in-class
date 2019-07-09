@@ -1,7 +1,5 @@
 package com.example.U1M6Summative.viewmodel;
 
-
-
 import com.example.U1M6Summative.dto.Invoice;
 
 import javax.validation.constraints.NotBlank;

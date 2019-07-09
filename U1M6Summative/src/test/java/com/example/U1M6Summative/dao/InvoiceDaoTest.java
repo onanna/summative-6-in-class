@@ -29,16 +29,14 @@ public class InvoiceDaoTest {
 
     @Before
     public void setUp() throws Exception {
-
-        List<Customer> customerList = customerDao.getAllCustomers();
-        for (Customer customer : customerList) {
-            customerDao.deleteCustomer(customer.getCustomerId());
-        }
         List<Invoice> invoiceList = invoiceDao.getAllInvoices();
         for (Invoice invoice : invoiceList) {
             invoiceDao.deleteInvoice(invoice.getInvoiceId());
         }
-
+        List<Customer> customerList = customerDao.getAllCustomers();
+        for (Customer customer : customerList) {
+            customerDao.deleteCustomer(customer.getCustomerId());
+        }
     }
 
     @Test(expected  = DataIntegrityViolationException.class)

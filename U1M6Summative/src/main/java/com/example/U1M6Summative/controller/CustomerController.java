@@ -11,7 +11,6 @@ import java.io.PipedOutputStream;
 @RequestMapping("/customer")
 public class CustomerController {
 
-
     @PostMapping
     public Customer addCustomer(@RequestBody Customer customer){
 
@@ -30,12 +29,9 @@ public class CustomerController {
         return customer;
     }
 
-
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable(name = "id") int id){
         //no code here, will delete
-
     }
-
 }
