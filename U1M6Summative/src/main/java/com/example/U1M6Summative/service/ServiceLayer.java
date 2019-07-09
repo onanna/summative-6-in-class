@@ -4,11 +4,11 @@ import com.example.U1M6Summative.dao.CustomerDao;
 import com.example.U1M6Summative.dao.InvoiceDao;
 import com.example.U1M6Summative.dao.InvoiceItemDao;
 import com.example.U1M6Summative.dao.ItemDao;
-import com.example.U1M6Summative.dto.Invoice;
+
 import com.example.U1M6Summative.viewmodel.CustomerViewModel;
 import com.example.U1M6Summative.viewmodel.InvoiceViewModel;
 import com.example.U1M6Summative.viewmodel.ItemViewModel;
-import org.graalvm.compiler.lir.alloc.lsra.LinearScan;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

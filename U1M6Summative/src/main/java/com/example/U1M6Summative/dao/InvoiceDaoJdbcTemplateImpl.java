@@ -26,7 +26,7 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
     }
 
     @Override
-    public List<Invoice> getInvoiceByCustomer(Integer customerId) {
+    public List<Invoice> getInvoicByCustomer(Integer customerId) {
         return null;
     }
 
