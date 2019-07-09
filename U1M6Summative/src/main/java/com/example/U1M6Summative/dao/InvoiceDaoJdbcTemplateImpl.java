@@ -1,9 +1,8 @@
 package com.example.U1M6Summative.dao;
 
-import com.example.U1M6Summative.dao.InvoiceDao;
+
 import com.example.U1M6Summative.dto.Invoice;
-import com.example.U1M6Summative.dto.InvoiceItem;
-import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
