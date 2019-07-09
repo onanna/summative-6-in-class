@@ -42,12 +42,13 @@ public class InvoiceDaoTest {
     @Test(expected  = DataIntegrityViolationException.class)
     public void addWithRefIntegrityException(){
         Invoice invoice = new Invoice();
-        invoice.setReturnDate(LocalDate.of(2013, 03, 20));
-        invoice.setPickupDate(LocalDate.of(2014, 03, 10));
-        invoice.setOrderDate(LocalDate.of(2013, 04, 1));
-        invoice.setLateFee(new BigDecimal(3.55));
         invoice.setCustomerId(25);
-        invoice.setInvoiceId(40);
+        invoice.setOrderDate(LocalDate.of(2013, 04, 1));
+        invoice.setPickupDate(LocalDate.of(2014, 03, 10));
+        invoice.setReturnDate(LocalDate.of(2013, 03, 20));
+        invoice.setLateFee(new BigDecimal("3.55"));
+
+        invoice = invoiceDao.addInvoice(invoice);
     }
 
 
@@ -60,7 +61,6 @@ public class InvoiceDaoTest {
         customer.setEmail("mirabelhalls@gmail.com");
         customer.setCompany("Trilogy");
         customer.setPhone("37487498734");
-
 
         customer = customerDao.addCustomer(customer);
 
@@ -82,8 +82,6 @@ public class InvoiceDaoTest {
         assertNull(invoice1);
     }
 
-
-
     @Test
     public void findInvoiceByCustomer() {
         Customer customer = new Customer();
@@ -98,7 +96,7 @@ public class InvoiceDaoTest {
 
         Invoice invoice = new Invoice();
         invoice.setCustomerId(customer.getCustomerId());
-        invoice.setLateFee(new BigDecimal(2.55));
+        invoice.setLateFee(new BigDecimal("2.55"));
         invoice.setOrderDate(LocalDate.of(2013,04,20));
         invoice.setPickupDate(LocalDate.of(2014,04,20));
         invoice.setReturnDate(LocalDate.of(2015,04,20));
@@ -110,6 +108,5 @@ public class InvoiceDaoTest {
         assertEquals(invoice1.size(), 1);
 
         assertEquals(invoice1.get(0), invoice);
-
     }
 }

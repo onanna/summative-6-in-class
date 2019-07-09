@@ -7,12 +7,13 @@ import java.util.List;
 public interface InvoiceDao {
     Invoice addInvoice(Invoice invoice);
 
-    void deleteInvoice(int id);
-
-    List<Invoice> getInvoiceByCustomer(Integer customerId);
-
-    List<Invoice> getAllInvoices();
+    void updateInvoice(Invoice invoice);
 
     Invoice getInvoiceById( int id);
 
+    List<Invoice> getAllInvoices();
+
+    void deleteInvoice(int id);
+
+    List<Invoice> getInvoiceByCustomer(Integer customerId);
 }

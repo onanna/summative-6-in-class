@@ -41,30 +41,36 @@ public class InvoiceItemDaoTest {
         for (InvoiceItem i : invoiceItemList) {
             invoiceItemDao.deleteInvoiceItem(i.getInvoiceId());
         }
+
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+        for(Invoice i : invoiceList){
+            invoiceDao.deleteInvoice(i.getInvoiceId());
+        }
+
         List<Customer> customerList = customerDao.getAllCustomers();
         for(Customer c : customerList){
             customerDao.deleteCustomer(c.getCustomerId());
         }
+
         List<Item> itemList = itemDao.getAllItems();
         for(Item t : itemList){
             itemDao.deleteItem(t.getItemId());
         }
-
     }
-
 
     @Test(expected  = DataIntegrityViolationException.class)
     public void addWithRefIntegrityException(){
         InvoiceItem invoiceItem = new InvoiceItem();
 
-        invoiceItem.setDiscount(new BigDecimal(2.99));
-        invoiceItem.setUnitRate(new BigDecimal(3.99));
         invoiceItem.setInvoiceId(35);
         invoiceItem.setItemId(24);
         invoiceItem.setQuantity(25);
+        invoiceItem.setUnitRate(new BigDecimal("3.99"));
+        invoiceItem.setDiscount(new BigDecimal("2.99"));
         invoiceItem.setInvoiceItemId(40);
-    }
 
+        invoiceItem = invoiceItemDao.addInvoiceItem(invoiceItem);
+    }
 
     @Test
     public void addGetAndDeleteInvoiceItems(){

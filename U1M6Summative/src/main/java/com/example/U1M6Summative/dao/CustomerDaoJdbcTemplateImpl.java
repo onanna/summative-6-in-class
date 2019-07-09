@@ -85,7 +85,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
                 customer.getCompany(),
                 customer.getPhone(),
                 customer.getCustomerId());
-
     }
 
     @Override

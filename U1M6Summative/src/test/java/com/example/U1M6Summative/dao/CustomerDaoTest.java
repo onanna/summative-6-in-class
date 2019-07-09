@@ -79,6 +79,11 @@ public class CustomerDaoTest {
         customer1.setPhone("48854985803");
 
         customer1 = customerDao.addCustomer(customer1);
+        System.out.println("customer1 id " + customer1);
+        System.out.println("FirstName:" + customer1.getFirstName());
+        System.out.println("LastName:" + customer1.getLastName());
+        System.out.println("Email:" + customer1.getEmail());
+        System.out.println("Company:" + customer1.getCompany());
 
         customer1.setFirstName("Wario");
         customer1.setLastName("Waaa");
@@ -88,6 +93,17 @@ public class CustomerDaoTest {
         customerDao.updateCustomer(customer1);
 
         Customer customer2 = customerDao.getCustomer(customer1.getCustomerId());
+        System.out.println("customer1 id " + customer1);
+        System.out.println("FirstName:" + customer1.getFirstName());
+        System.out.println("LastName:" + customer1.getLastName());
+        System.out.println("Email:" + customer1.getEmail());
+        System.out.println("Company:" + customer1.getCompany());
+
+        System.out.println("customer2 id " + customer2);
+        System.out.println("FirstName:" + customer2.getFirstName());
+        System.out.println("LastName:" + customer2.getLastName());
+        System.out.println("Email:" + customer2.getEmail());
+        System.out.println("Company:" + customer2.getCompany());
 
         assertEquals(customer1,customer2);
     }

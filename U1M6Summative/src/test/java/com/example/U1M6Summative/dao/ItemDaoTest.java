@@ -11,7 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -32,9 +33,9 @@ public class ItemDaoTest {
     public void addGetAndDeleteItem(){
         Item item = new Item();
 
-        item.setDescription("A condiment");
         item.setName("Ketchup");
-        item.setDailyRate(new BigDecimal(3.99));
+        item.setDescription("A condiment");
+        item.setDailyRate(new BigDecimal("3.99"));
 
         item = itemDao.addItem(item);
 
@@ -69,20 +70,20 @@ public class ItemDaoTest {
     public void updateItem() {
         Item item = new Item();
 
-        item.setDescription("A condiment");
         item.setName("Ketchup");
-        item.setDailyRate(new BigDecimal(3.99));
+        item.setDescription("A condiment");
+        item.setDailyRate(new BigDecimal("3.99"));
 
         item = itemDao.addItem(item);
 
-        item.setDailyRate(new BigDecimal(2.55));
         item.setName("Mayo");
+        item.setDescription("A Chocolate");
+        item.setDailyRate(new BigDecimal("2.55"));
 
         itemDao.updateItem(item);
 
         Item item1 = itemDao.getItem(item.getItemId());
 
         assertEquals(item, item1);
-
     }
 }

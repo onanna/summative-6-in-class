@@ -49,16 +49,19 @@ public class Item {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Item)) return false;
-        Item item = (Item) o;
-        return getItemId().equals(item.getItemId()) &&
-                getName().equals(item.getName()) &&
-                getDescription().equals(item.getDescription()) &&
-                getDailyRate().equals(item.getDailyRate());
+        if (o == null || getClass() != o.getClass()) return false;
+        Item that = (Item) o;
+        return getItemId() == that.getItemId() &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getDescription(), that.getDescription()) &&
+                Objects.equals(getDailyRate(), that.getDailyRate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getItemId(), getName(), getDescription(), getDailyRate());
+        return Objects.hash(getItemId(),
+                getName(),
+                getDescription(),
+                getDailyRate());
     }
 }
