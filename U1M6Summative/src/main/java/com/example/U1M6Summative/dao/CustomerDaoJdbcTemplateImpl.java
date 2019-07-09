@@ -33,9 +33,8 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
     private static final String UPDATE_CUSTOMER_SQL =
             "update customer set first_name = ?, last_name = ?, email = ?, company = ?, phone = ? where customer_id = ?";
 
-    private static final String DELETE_CUSTOMER =
+    private static final String DELETE_CUSTOMER_SQL =
             "delete from customer where customer_id = ?";
-
 
     private Customer mapRowToCustomer(ResultSet rs, int rowNum) throws SQLException {
         Customer customer = new Customer();
@@ -89,7 +88,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
 
     @Override
     public void deleteCustomer(int id) {
-        jdbcTemplate.update(DELETE_CUSTOMER, id);
+        jdbcTemplate.update(DELETE_CUSTOMER_SQL, id);
 
     }
 

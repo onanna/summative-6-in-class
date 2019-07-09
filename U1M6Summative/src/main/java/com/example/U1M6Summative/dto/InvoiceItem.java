@@ -86,8 +86,8 @@ public class InvoiceItem {
                 getInvoiceItemId() == invoiceItem.getInvoiceItemId() &&
                 getItemId() == invoiceItem.getItemId() &&
                 getQuantity() == invoiceItem.getQuantity() &&
-                getUnitRate() == invoiceItem.getUnitRate() &&
-                getDiscount() == invoiceItem.getDiscount();
+                Objects.equals(getUnitRate(), invoiceItem.getUnitRate()) &&
+                Objects.equals(getDiscount(), invoiceItem.getDiscount());
     }
 
     @Override

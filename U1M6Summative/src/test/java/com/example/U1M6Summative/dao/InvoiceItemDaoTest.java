@@ -39,7 +39,7 @@ public class InvoiceItemDaoTest {
     public void setUp() throws Exception {
         List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
         for (InvoiceItem i : invoiceItemList) {
-            invoiceItemDao.deleteInvoiceItem(i.getInvoiceId());
+            invoiceItemDao.deleteInvoiceItem(i.getInvoiceItemId());
         }
 
         List<Invoice> invoiceList = invoiceDao.getAllInvoices();
@@ -97,15 +97,15 @@ public class InvoiceItemDaoTest {
 
         Item item = new Item();
 
-        item.setDailyRate(new BigDecimal(3.50));
+        item.setDailyRate(new BigDecimal("3.50"));
         item.setName("Ketchup");
         item.setDescription("This is a condiment");
         item = itemDao.addItem(item);
 
         InvoiceItem invoiceItem = new InvoiceItem();
 
-        invoiceItem.setDiscount(new BigDecimal(2.99));
-        invoiceItem.setUnitRate(new BigDecimal(3.99));
+        invoiceItem.setDiscount(new BigDecimal("2.99"));
+        invoiceItem.setUnitRate(new BigDecimal("3.99"));
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
         invoiceItem.setItemId(item.getItemId());
         invoiceItem.setQuantity(25);
@@ -150,15 +150,15 @@ public class InvoiceItemDaoTest {
 
         Item item = new Item();
 
-        item.setDailyRate(new BigDecimal(3.50));
+        item.setDailyRate(new BigDecimal("3.50"));
         item.setName("Ketchup");
         item.setDescription("This is a condiment");
         item = itemDao.addItem(item);
 
         InvoiceItem invoiceItem = new InvoiceItem();
 
-        invoiceItem.setDiscount(new BigDecimal(2.99));
-        invoiceItem.setUnitRate(new BigDecimal(3.99));
+        invoiceItem.setDiscount(new BigDecimal("2.99"));
+        invoiceItem.setUnitRate(new BigDecimal("3.99"));
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
         invoiceItem.setItemId(item.getItemId());
         invoiceItem.setQuantity(25);
@@ -195,15 +195,15 @@ public class InvoiceItemDaoTest {
 
         Item item = new Item();
 
-        item.setDailyRate(new BigDecimal(3.50));
+        item.setDailyRate(new BigDecimal("3.50"));
         item.setName("Ketchup");
         item.setDescription("This is a condiment");
         item = itemDao.addItem(item);
 
         InvoiceItem invoiceItem = new InvoiceItem();
 
-        invoiceItem.setDiscount(new BigDecimal(2.99));
-        invoiceItem.setUnitRate(new BigDecimal(3.99));
+        invoiceItem.setDiscount(new BigDecimal("2.99"));
+        invoiceItem.setUnitRate(new BigDecimal("3.99"));
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
         invoiceItem.setItemId(item.getItemId());
         invoiceItem.setQuantity(25);
@@ -211,13 +211,12 @@ public class InvoiceItemDaoTest {
         invoiceItem = invoiceItemDao.addInvoiceItem(invoiceItem);
 
         invoiceItem.setQuantity(32);
-        invoiceItem.setUnitRate(new BigDecimal(3.50));
+        invoiceItem.setUnitRate(new BigDecimal("3.50"));
 
         invoiceItemDao.updateInvoiceItem(invoiceItem);
 
         InvoiceItem invoiceItem1 = invoiceItemDao.getInvoiceItem(invoiceItem.getInvoiceItemId());
 
         assertEquals(invoiceItem, invoiceItem1);
-
     }
 }

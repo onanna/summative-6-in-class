@@ -1,5 +1,8 @@
 package com.example.U1M6Summative.dao;
 
+import com.example.U1M6Summative.dto.Customer;
+import com.example.U1M6Summative.dto.Invoice;
+import com.example.U1M6Summative.dto.InvoiceItem;
 import com.example.U1M6Summative.dto.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,12 +22,36 @@ import static org.junit.Assert.assertNull;
 public class ItemDaoTest {
 
     @Autowired
+    InvoiceItemDao invoiceItemDao;
+
+    @Autowired
+    InvoiceDao invoiceDao;
+
+    @Autowired
+    CustomerDao customerDao;
+
+    @Autowired
     ItemDao itemDao;
 
     @Before
     public void setUp() throws Exception {
+        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
+        for (InvoiceItem i : invoiceItemList) {
+            invoiceItemDao.deleteInvoiceItem(i.getInvoiceItemId());
+        }
+
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+        for(Invoice i : invoiceList){
+            invoiceDao.deleteInvoice(i.getInvoiceId());
+        }
+
+        List<Customer> customerList = customerDao.getAllCustomers();
+        for(Customer c : customerList){
+            customerDao.deleteCustomer(c.getCustomerId());
+        }
+
         List<Item> itemList = itemDao.getAllItems();
-        for (Item t : itemList){
+        for(Item t : itemList){
             itemDao.deleteItem(t.getItemId());
         }
     }

@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
 
-    private JdbcTemplate jdbcTemplate;
 
+    private JdbcTemplate jdbcTemplate;
     @Autowired
     public InvoiceItemDaoJdbcTemplateImpl (JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
@@ -24,16 +24,13 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     private static final String SELECT_INVOICE_ITEM_SQL =
             "select * from invoice_item where invoice_item_id = ?";
     private static final String SELECT_ALL_INVOICE_ITEMS_SQL =
-            "select from invoice_item";
- 
-
+            "select * from invoice_item";
     private static final String INSERT_INVOICE_ITEM_SQL =
             "insert into invoice_item (invoice_id, item_id, quantity, unit_rate, discount) values (?,?,?,?,?)";
     private static final String UPDATE_INVOICE_ITEM_SQL =
-            "update invoice_item set item_id = ?, quantity = ?, unit_rate = ?, discount = ? where invoice_item_id = ?";
-
+            "update invoice_item set invoice_id = ?, item_id = ?, quantity = ?, unit_rate = ?, discount = ? where invoice_item_id = ?";
     private static final String DELETE_INVOICE_ITEM =
-            "delete invoice_item where invoice_item_id = ?";
+            "delete from invoice_item where invoice_item_id = ?";
 
     @Override
     public InvoiceItem getInvoiceItem(Integer id) {
@@ -53,9 +50,7 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     @Transactional
     public InvoiceItem addInvoiceItem(InvoiceItem invoiceItem) {
         jdbcTemplate.update(INSERT_INVOICE_ITEM_SQL,
-
-                invoiceItem.getInvoiceItemId(),
-
+                invoiceItem.getInvoiceId(),
                 invoiceItem.getItemId(),
                 invoiceItem.getQuantity(),
                 invoiceItem.getUnitRate(),
@@ -72,14 +67,12 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     @Override
     public void updateInvoiceItem(InvoiceItem invoiceItem) {
         jdbcTemplate.update(UPDATE_INVOICE_ITEM_SQL,
-                invoiceItem.getInvoiceItemId(),
-
                 invoiceItem.getInvoiceId(),
-
                 invoiceItem.getItemId(),
                 invoiceItem.getQuantity(),
                 invoiceItem.getUnitRate(),
-                invoiceItem.getDiscount());
+                invoiceItem.getDiscount(),
+                invoiceItem.getInvoiceItemId());
 
     }
 
@@ -98,9 +91,6 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
         invoiceItem.setUnitRate(rs.getBigDecimal("unit_rate"));
         invoiceItem.setDiscount(rs.getBigDecimal("discount"));
 
-
         return invoiceItem;
     }
-
-
 }
