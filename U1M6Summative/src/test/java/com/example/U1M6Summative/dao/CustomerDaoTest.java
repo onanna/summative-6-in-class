@@ -89,7 +89,7 @@ public class CustomerDaoTest {
         customer1.setCompany("Cognizant");
         customer1.setPhone("37462646474");
 
-       customer1 = customerDao.addCustomer(customer1);
+        customer1 = customerDao.addCustomer(customer1);
 
         List<Customer> customerList = customerDao.getAllCustomers();
 

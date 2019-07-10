@@ -12,6 +12,8 @@ public interface InvoiceItemDao {
 
     InvoiceItem addInvoiceItem(InvoiceItem invoiceItem);
 
+    List<InvoiceItem> getInvoiceItemByInvoice(int invoiceId);
+
     void updateInvoiceItem(InvoiceItem invoiceItem);
 
     void deleteInvoiceItem(Integer id);

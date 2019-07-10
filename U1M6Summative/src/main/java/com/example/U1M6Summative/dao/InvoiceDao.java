@@ -10,7 +10,7 @@ public interface InvoiceDao {
 
     void updateInvoice(Invoice invoice);
 
-    Invoice getInvoiceById( int id);
+    Invoice getInvoiceById(int id);
 
     List<Invoice> getAllInvoices();
 

@@ -1,5 +1,6 @@
 package com.example.U1M6Summative.viewmodel;
 
+import com.example.U1M6Summative.dto.Customer;
 import com.example.U1M6Summative.dto.InvoiceItem;
 
 
@@ -11,29 +12,31 @@ import java.util.Objects;
 
 public class InvoiceViewModel {
 
-  private Integer id;
-  private Integer customerId;
-  private LocalDate orderDate;
-  private LocalDate pickupDate;
-  private LocalDate returnDate;
-  private BigDecimal lateFee;
+    private Integer invoiceId;
+    private Customer customer;
+    private LocalDate orderDate;
+    private LocalDate pickupDate;
+    private LocalDate returnDate;
+    private BigDecimal lateFee;
+    private List<InvoiceItemViewModel> invoiceItemViewModels = new ArrayList<>( );
 
-  List<InvoiceItem> invoiceItemList = new ArrayList<>();
-
-    public Integer getId() {
-        return id;
+    public InvoiceViewModel() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getInvoiceId() {
+        return invoiceId;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public void setInvoiceId(Integer invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public LocalDate getOrderDate() {
@@ -68,30 +71,44 @@ public class InvoiceViewModel {
         this.lateFee = lateFee;
     }
 
-    public List<InvoiceItem> getInvoiceItemList() {
-        return invoiceItemList;
+    public List<InvoiceItemViewModel> getInvoiceItemViewModels() {
+        return invoiceItemViewModels;
     }
 
-    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
-        this.invoiceItemList = invoiceItemList;
+    public void setInvoiceItemViewModels(List<InvoiceItemViewModel> invoiceItemViewModels) {
+        this.invoiceItemViewModels = invoiceItemViewModels;
+    }
+
+    public void addInvoiceItemViewModel(InvoiceItemViewModel invoiceItemViewModel) {
+        invoiceItemViewModels.add(invoiceItemViewModel);
+    }
+
+    public void removeInvoiceItemViewModel(InvoiceItemViewModel invoiceItemViewModel) {
+        invoiceItemViewModels.remove(invoiceItemViewModel);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof InvoiceViewModel)) return false;
-        InvoiceViewModel that = (InvoiceViewModel) o;
-        return getId().equals(that.getId()) &&
-                getCustomerId().equals(that.getCustomerId()) &&
-                getOrderDate().equals(that.getOrderDate()) &&
-                getPickupDate().equals(that.getPickupDate()) &&
-                getReturnDate().equals(that.getReturnDate()) &&
-                getLateFee().equals(that.getLateFee()) &&
-                getInvoiceItemList().equals(that.getInvoiceItemList());
+        if (o == null || getClass() != o.getClass()) return false;
+        InvoiceViewModel invoiceViewModel = (InvoiceViewModel) o;
+        return getInvoiceId() == invoiceViewModel.getInvoiceId() &&
+                Objects.equals(getCustomer(), invoiceViewModel.getCustomer()) &&
+                Objects.equals(getOrderDate(), invoiceViewModel.getOrderDate()) &&
+                Objects.equals(getPickupDate(), invoiceViewModel.getPickupDate()) &&
+                Objects.equals(getReturnDate(), invoiceViewModel.getReturnDate()) &&
+                Objects.equals(getLateFee(), invoiceViewModel.getLateFee()) &&
+                Objects.equals(getInvoiceItemViewModels(), invoiceViewModel.getInvoiceItemViewModels());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCustomerId(), getOrderDate(), getPickupDate(), getReturnDate(), getLateFee(), getInvoiceItemList());
+        return Objects.hash(getInvoiceId(),
+                getCustomer(),
+                getOrderDate(),
+                getPickupDate(),
+                getReturnDate(),
+                getLateFee(),
+                getInvoiceItemViewModels());
     }
 }

@@ -14,7 +14,6 @@ import java.util.List;
 @Repository
 public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
 
-
     private JdbcTemplate jdbcTemplate;
     @Autowired
     public InvoiceItemDaoJdbcTemplateImpl (JdbcTemplate jdbcTemplate){
@@ -25,6 +24,8 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
             "select * from invoice_item where invoice_item_id = ?";
     private static final String SELECT_ALL_INVOICE_ITEMS_SQL =
             "select * from invoice_item";
+    private static final String  SELECT_INVOICE_ITEM_BY_INVOICE_ID_SQL =
+            "select * from invoice_item where invoice_id = ?";
     private static final String INSERT_INVOICE_ITEM_SQL =
             "insert into invoice_item (invoice_id, item_id, quantity, unit_rate, discount) values (?,?,?,?,?)";
     private static final String UPDATE_INVOICE_ITEM_SQL =
@@ -44,6 +45,15 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     @Override
     public List<InvoiceItem> getAllInvoiceItems() {
         return jdbcTemplate.query(SELECT_ALL_INVOICE_ITEMS_SQL, this::mapRowToInvoiceItem);
+    }
+
+    @Override
+    public List<InvoiceItem> getInvoiceItemByInvoice(int invoiceId)
+    {
+        return jdbcTemplate.query(
+                SELECT_INVOICE_ITEM_BY_INVOICE_ID_SQL,
+                this::mapRowToInvoiceItem,
+                invoiceId);
     }
 
     @Override

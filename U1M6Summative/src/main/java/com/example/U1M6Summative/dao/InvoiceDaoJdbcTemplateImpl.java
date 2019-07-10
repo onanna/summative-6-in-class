@@ -38,7 +38,7 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
             "select * from invoice where customer_id = ?";
 
     @Override
-    public Invoice getInvoiceById( int id)
+    public Invoice getInvoiceById(int id)
     {
         try {
             return jdbcTemplate.queryForObject(SELECT_INVOICE_SQL, this::mapRowToInvoice, id);

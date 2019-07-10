@@ -9,19 +9,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class CustomerViewModel {
-    private Integer id;
+    private Integer customerId;
     private String firstName;
     private String lastName;
     private String email;
     private String company;
     private String phone;
 
-    public Integer getId() {
-        return id;
+    public CustomerViewModel() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getFirstName() {
@@ -64,24 +67,26 @@ public class CustomerViewModel {
         this.phone = phone;
     }
 
-    public CustomerViewModel() {
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CustomerViewModel)) return false;
-        CustomerViewModel that = (CustomerViewModel) o;
-        return getId().equals(that.getId()) &&
-                getFirstName().equals(that.getFirstName()) &&
-                getLastName().equals(that.getLastName()) &&
-                getEmail().equals(that.getEmail()) &&
-                getCompany().equals(that.getCompany()) &&
-                getPhone().equals(that.getPhone());
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomerViewModel customerViewModel = (CustomerViewModel) o;
+        return getCustomerId() == customerViewModel.getCustomerId() &&
+                Objects.equals(getFirstName(), customerViewModel.getFirstName()) &&
+                Objects.equals(getLastName(), customerViewModel.getLastName()) &&
+                Objects.equals(getEmail(), customerViewModel.getEmail()) &&
+                Objects.equals(getCompany(), customerViewModel.getCompany()) &&
+                Objects.equals(getPhone(), customerViewModel.getPhone());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getCompany(), getPhone());
+        return Objects.hash(getCustomerId(),
+                getFirstName(),
+                getLastName(),
+                getEmail(),
+                getCompany(),
+                getPhone());
     }
 }
